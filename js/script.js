@@ -1,10 +1,15 @@
 'use strict';
 
 // Variables
-var output = document.getElementById('converter-output');
-output.innerHTML = 'Click the button to convert from celcius to ferenheit.' + '<br><br>' + output.innerHTML; 
+var outputC = document.getElementById('converterC-output');
+outputC.innerHTML = 'Click the button to convert from celcius to ferenheit.' + '<br><br>' + outputC.innerHTML; 
 
-var button = document.getElementById('converter-button');
+var outputF = document.getElementById('converterF-output');
+outputF.innerHTML = 'Click the button to convert from ferenheit to celcius.' + '<br><br>' + outputF.innerHTML; 
+
+var buttonC = document.getElementById('converterC-button');
+var buttonF = document.getElementById('converterF-button');
+
 var degree;
 var ferenheit;
 
@@ -15,19 +20,19 @@ var messageThree = 'In this temperature you should wear jumper and scarf.<br><br
 var message;
 
 // Function on button click
-button.addEventListener('click', function(){
+buttonC.addEventListener('click', function(){
 
 	// Prompt window
 	degree = window.prompt('Type temperature degree in celcius:');
 
 	// Validate input then evalute if needed 
 	if(isNaN(degree)) {
-		output.innerHTML = 'You must type a number.<br><br>' + output.innerHTML;
+		outputC.innerHTML = 'You must type a number.<br><br>' + outputC.innerHTML;
 	} else if(degree == null) {
-		output.innerHTML = 'Canceled.<br><br>' + output.innerHTML;
+		outputC.innerHTML = 'Canceled.<br><br>' + outputC.innerHTML;
 	} else {
 		ferenheit = degree * 1.8 + 32;
-		output.innerHTML = degree + ' degree in celcius are ' + ferenheit + ' in ferenheit. <br><br>' + output.innerHTML; 
+		outputC.innerHTML = degree + ' degree in celcius are ' + ferenheit + ' in ferenheit. <br><br>' + outputC.innerHTML; 
 		// Print message upon input
 		if (degree < 8) {
 			message = messageThree;
@@ -37,8 +42,33 @@ button.addEventListener('click', function(){
 			message = messageOne;
 		}
 
-		output.innerHTML = message + output.innerHTML;
+		outputC.innerHTML = message + outputC.innerHTML;
 	}
-
 }); 
 
+	// Function on button click
+buttonF.addEventListener('click', function(){
+
+	// Prompt window
+	ferenheit = window.prompt('Type temperature degree in ferenheit:');
+
+	// Validate input then evalute if needed 
+	if(isNaN(ferenheit)) {
+		outputF.innerHTML = 'You must type a number.<br><br>' + outputF.innerHTML;
+	} else if(ferenheit == null) {
+		outputF.innerHTML = 'Canceled.<br><br>' + outputF.innerHTML;
+	} else {
+		degree = (ferenheit - 32) * 5/9;
+		outputF.innerHTML = ferenheit + ' degree in ferenheit are ' + degree + ' in celcius. <br><br>' + outputF.innerHTML; 
+		// Print message upon input
+		if (degree < 8) {
+			message = messageThree;
+		} else if(degree < 16) {
+			message = messageTwo;
+		} else {
+			message = messageOne;
+		}
+
+		outputF.innerHTML = message + outputF.innerHTML;
+	}
+}); 
