@@ -8,6 +8,12 @@ var button = document.getElementById('converter-button');
 var degree;
 var ferenheit;
 
+// Messages 
+var messageOne = 'In this temperature you can wear shorts.<br><br>';
+var messageTwo = 'In this temperature you should wear jacket.<br><br>';
+var messageThree = 'In this temperature you should wear jumper and scarf.<br><br>';
+var message;
+
 // Function on button click
 button.addEventListener('click', function(){
 
@@ -22,6 +28,16 @@ button.addEventListener('click', function(){
 	} else {
 		ferenheit = degree * 1.8 + 32;
 		output.innerHTML = degree + ' degree in celcius are ' + ferenheit + ' in ferenheit. <br><br>' + output.innerHTML; 
+		// Print message upon input
+		if (degree < 8) {
+			message = messageThree;
+		} else if(degree < 16) {
+			message = messageTwo;
+		} else {
+			message = messageOne;
+		}
+
+		output.innerHTML = message + output.innerHTML;
 	}
 
 }); 
